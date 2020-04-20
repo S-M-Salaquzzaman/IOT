@@ -1,0 +1,36 @@
+/////////////////////////////////
+//      WiFi CONNECTED        //
+////////////////////////////////
+#include <ESP8266WiFi.h>
+IPAddress staticIP377_10(192,168,1,10);
+IPAddress gateway377_10(192,168,1,1);
+IPAddress subnet377_10(255,255,255,0);
+
+void setup()
+{
+  Serial.begin(9600);
+  Serial.print("TRYING TO CONNECTED WiFI");
+  delay(300);
+   WiFi.begin("Your WiFi Name","WiFi Password");
+  while ((!(WiFi.status() == WL_CONNECTED))){
+    delay(300);
+    Serial.print("...");
+
+  }
+  Serial.println("CONNECTED");
+  WiFi.config(staticIP377_10, gateway377_10, subnet377_10);
+  Serial.println("IP");
+  Serial.println((WiFi.localIP().toString()));
+  Serial.println("Gateway IP");
+  Serial.println((WiFi.gatewayIP().toString().c_str()));
+  Serial.println("Mask");
+  Serial.println((WiFi.subnetMask().toString().c_str()));
+
+}
+
+
+void loop()
+{
+
+
+}
